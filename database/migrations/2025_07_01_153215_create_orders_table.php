@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('address_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->decimal('total', 10, 2);
-            $table->enum('status', OrderStatusEnum::allValuesAsArray())->default(OrderStatusEnum::PENDING);
+            $table->enum('status', OrderStatusEnum::allValuesAsArray())->default(OrderStatusEnum::default());
             $table->string('payment_method');
             $table->string('payment_status');
             $table->timestamps();
