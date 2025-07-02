@@ -6,6 +6,7 @@ use App\Models\User;
 use App\DTOs\Auth\RegisterUserDTO;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\Auth\UserResource;
 
 class RegisterUserService
 {
@@ -22,7 +23,7 @@ class RegisterUserService
       $token = $user->createToken('auth_token')->plainTextToken;
 
       return [
-        'user'  => $user,
+        'user'  => new UserResource($user),
         'token' => $token
       ];
     });

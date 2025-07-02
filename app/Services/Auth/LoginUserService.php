@@ -7,6 +7,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Auth\UserResource;
 
 class LoginUserService
 {
@@ -23,8 +24,9 @@ class LoginUserService
     if (!$token) {
       throw new HttpResponseException(response()->json(['message' => 'Erorr al intentar generar el token'], Response::HTTP_INTERNAL_SERVER_ERROR));
     }
+
     return [
-      'user' => $user,
+      'user' => new UserResource($user),
       'token' => $token
     ];
   }
