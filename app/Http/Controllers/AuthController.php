@@ -6,8 +6,8 @@ use App\DTOs\Auth\LoginUserDTO;
 use App\DTOs\Auth\RegisterUserDTO;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
-use App\Http\Requests\AuthRegisterRequest;
-use App\Http\Requests\AuthLoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Services\Auth\RegisterUserService;
 use App\Services\Auth\LoginUserService;
 
@@ -17,7 +17,7 @@ class AuthController extends Controller
 {
     public function __construct(private RegisterUserService $registerUserService, private LoginUserService $loginUserService) {}
 
-    public function register(AuthRegisterRequest $request)
+    public function register(RegisterRequest $request)
     {
         try {
             $dto = RegisterUserDTO::fromRequest($request);
@@ -34,7 +34,7 @@ class AuthController extends Controller
     }
 
 
-    public function login(AuthLoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $dto = LoginUserDTO::fromRequest($request);
         $result = $this->loginUserService->execute($dto);
