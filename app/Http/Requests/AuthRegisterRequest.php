@@ -22,18 +22,24 @@ class AuthRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required'
+            'name' => 'required|min:3',
+            'email' => 'required|unique:users,email|email',
+            'password' => 'required|confirmed|min:6',
+            'phone' => 'nullable|regex:/^\+?[0-9]{10,15}$/',
         ];
     }
 
-    public function message(): array
+    public function messages(): array
     {
         return [
+            'name.required' => 'El campo name es requerido.',
+            'name.min' => 'El campo name debe contener al menos 3 caracteres.',
             'email.required' => 'El campo email es requerido.',
-            'email.email' => 'El email ingresado no es correcto.',
-            'email.exists' => 'El email ingresado no es correcto.',
-            'password.required' => 'El campo password es requerido.'
+            'email.unique' => 'El campo email ya esta en uso.',
+            'email.email' => 'Debes ingresar un email valido.',
+            'password.required' => 'El campo password es requerido.',
+            'password.confirmed' => 'Los campos password y password_confirmation no coinciden.',
+            'phone.regex' => 'Debes ingresar un phone valido.',
         ];
     }
 }

@@ -11,7 +11,7 @@ class AuthLoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class AuthLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'El campo email es requerido.',
+            'email.email' => 'El email ingresado no es valido.',
+            'email.exists' => 'El email ingresado no esta registrado.',
+            'password' => 'El campo password es requerido.'
         ];
     }
 }
