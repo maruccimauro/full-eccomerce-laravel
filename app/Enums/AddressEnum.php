@@ -14,4 +14,6 @@ class AddressEnum
   public const POSTAL_CODE = 'postal_code';
   public const COUNTRY = 'country';
   public const PHONE = 'phone';
+  public const CREATED_AT = 'created_at';
+  public const UPDATED_AT = 'updated_at';
 }
