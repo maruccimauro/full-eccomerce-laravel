@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Enums\OrderStatusEnum;
+use App\Enums\OrderPaymentStatusEnum;
 
 return new class extends Migration
 {
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->decimal('total', 10, 2);
             $table->enum('status', OrderStatusEnum::allValuesAsArray())->default(OrderStatusEnum::default());
             $table->string('payment_method');
-            $table->string('payment_status');
+            $table->enum('payment_status', OrderPaymentStatusEnum::allValuesAsArray())->default(OrderPaymentStatusEnum::default());
             $table->timestamps();
         });
     }
