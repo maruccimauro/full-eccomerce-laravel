@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\PaymentEnum;
+use App\Fields\PaymentFields;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Payment>
@@ -18,8 +18,8 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            PaymentEnum::PAYMENT_GATEWAY => fake()->randomElement(['stripe', 'paypal', 'mercado_pago']),
-            PaymentEnum::TRANSACTION_ID => fake()->numerify('####################'),
+            PaymentFields::PAYMENT_GATEWAY => fake()->randomElement(['stripe', 'paypal', 'mercado_pago']),
+            PaymentFields::TRANSACTION_ID => fake()->numerify('####################'),
         ];
     }
 }

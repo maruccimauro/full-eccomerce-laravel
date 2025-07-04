@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\OrderItemEnum;
+use App\Fields\OrderItemFields;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderItem>
@@ -19,7 +19,7 @@ class OrderItemFactory extends Factory
     {
         return [
 
-            OrderItemEnum::QUANTITY => 'quantity',
+            OrderItemFields::QUANTITY => 'quantity',
 
         ];
     }

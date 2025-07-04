@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\CartItemEnum;
+use App\Fields\CartItemFields;
 use App\Models\Cart;
 use App\Models\Product;
 
@@ -21,7 +21,7 @@ class CartItemFactory extends Factory
     public function definition(): array
     {
         return [
-            CartItemEnum::QUANTITY => fake()->numberBetween(1, 20)
+            CartItemFields::QUANTITY => fake()->numberBetween(1, 20)
         ];
     }
 }

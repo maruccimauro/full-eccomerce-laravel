@@ -3,10 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\ProductEnum;
+use App\Fields\ProductFields;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use App\Enums\CategoryEnum;
+use App\Fields\CategoryFields;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -21,15 +21,15 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $name = fake()->words(rand(1, 3), true);
-        $category_id =  Category::whereNotNull(CategoryEnum::PARENT_ID)->inRandomOrder()->first()->{CategoryEnum::ID} ?? null;
+        $category_id =  Category::whereNotNull(CategoryFields::PARENT_ID)->inRandomOrder()->first()->{CategoryFields::ID} ?? null;
         return [
-            ProductEnum::NAME => $name,
-            ProductEnum::SLUG => Str::slug($name),
-            ProductEnum::DESCRIPTION => fake()->paragraph(),
-            ProductEnum::PRICE => fake()->numberBetween(100, 20000),
-            ProductEnum::STOCK => fake()->numberBetween(0, 10000),
-            ProductEnum::CATEGORY_ID => $category_id,
-            ProductEnum::IS_ACTIVE => fake()->randomElement([0, 1]),
+            ProductFields::NAME => $name,
+            ProductFields::SLUG => Str::slug($name),
+            ProductFields::DESCRIPTION => fake()->paragraph(),
+            ProductFields::PRICE => fake()->numberBetween(100, 20000),
+            ProductFields::STOCK => fake()->numberBetween(0, 10000),
+            ProductFields::CATEGORY_ID => $category_id,
+            ProductFields::IS_ACTIVE => fake()->randomElement([0, 1]),
 
         ];
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Enums;
+namespace App\Fields;
 
 
-class ProductEnum
+class ProductFields
 {
   public const ID = 'id';
   public const NAME = 'name';

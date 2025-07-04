@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ProductEnum;
+use App\Fields\ProductFields;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Enums\ProductImageEnum;
+use App\Fields\ProductImageFields;
 
 class ProductImageSeed extends Seeder
 {
@@ -22,13 +22,13 @@ class ProductImageSeed extends Seeder
         }
         $products->each(function ($product) {
             ProductImage::factory()->create([
-                ProductImageEnum::PRODUCT_ID => $product->{ProductEnum::ID},
-                ProductImageEnum::IS_MAIN => 1,
+                ProductImageFields::PRODUCT_ID => $product->{ProductFields::ID},
+                ProductImageFields::IS_MAIN => 1,
             ]);
 
             ProductImage::factory(2)->create([
-                ProductImageEnum::PRODUCT_ID => $product->{ProductEnum::ID},
-                ProductImageEnum::IS_MAIN => 0,
+                ProductImageFields::PRODUCT_ID => $product->{ProductFields::ID},
+                ProductImageFields::IS_MAIN => 0,
             ]);
         });
     }

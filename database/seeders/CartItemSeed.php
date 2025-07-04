@@ -5,11 +5,11 @@ namespace Database\Seeders;
 use App\Models\CartItem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Enums\CartItemEnum;
+use App\Fields\CartItemFields;
 use App\Models\Product;
 use App\Models\Cart;
-use App\Enums\CartEnum;
-use App\Enums\ProductEnum;
+use App\Fields\CartFields;
+use App\Fields\ProductFields;
 
 class CartItemSeed extends Seeder
 {
@@ -30,8 +30,8 @@ class CartItemSeed extends Seeder
             $products = Product::inRandomOrder()->limit(rand(1, 8))->get();
             foreach ($products as $product) {
                 CartItem::factory()->create([
-                    CartItemEnum::CART_ID => $cart->{CartEnum::ID},
-                    CartItemEnum::PRODUCT_ID => $product->{ProductEnum::ID},
+                    CartItemFields::CART_ID => $cart->{CartFields::ID},
+                    CartItemFields::PRODUCT_ID => $product->{ProductFields::ID},
                 ]);
             }
         });

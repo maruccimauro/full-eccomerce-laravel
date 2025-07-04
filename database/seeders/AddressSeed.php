@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Enums\AddressEnum;
+use App\Fields\AddressFields;
 use App\Models\Address;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Enums\UserEnum;
+use App\Fields\UserFields;
 
 class AddressSeed extends Seeder
 {
@@ -22,7 +22,7 @@ class AddressSeed extends Seeder
         }
 
         $users->each(function ($user) {
-            Address::factory()->create([AddressEnum::USER_ID => $user->{UserEnum::ID}]);
+            Address::factory()->create([AddressFields::USER_ID => $user->{UserFields::ID}]);
         });
     }
 }

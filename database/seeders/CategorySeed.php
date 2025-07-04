@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use App\Enums\CategoryEnum;
+use App\Fields\CategoryFields;
 
 class CategorySeed extends Seeder
 {
@@ -66,18 +66,18 @@ class CategorySeed extends Seeder
         foreach ($categoriesData as $categoryData) {
 
             $parentCategory = Category::factory()->create([
-                CategoryEnum::NAME => $categoryData['name'],
-                CategoryEnum::SLUG => Str::slug($categoryData['name']),
-                CategoryEnum::PARENT_ID => null,
+                CategoryFields::NAME => $categoryData['name'],
+                CategoryFields::SLUG => Str::slug($categoryData['name']),
+                CategoryFields::PARENT_ID => null,
             ]);
 
 
             if (isset($categoryData['subcategories'])) {
                 foreach ($categoryData['subcategories'] as $subCategoryData) {
                     Category::factory()->create([
-                        CategoryEnum::NAME => $subCategoryData['name'],
-                        CategoryEnum::SLUG => Str::slug($subCategoryData['name']),
-                        CategoryEnum::PARENT_ID => $parentCategory->id,
+                        CategoryFields::NAME => $subCategoryData['name'],
+                        CategoryFields::SLUG => Str::slug($subCategoryData['name']),
+                        CategoryFields::PARENT_ID => $parentCategory->id,
                     ]);
                 }
             }

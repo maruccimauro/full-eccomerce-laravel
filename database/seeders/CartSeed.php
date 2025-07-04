@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Enums\CartEnum;
+use App\Fields\CartFields;
 use App\Models\User;
 use App\Models\Cart;
-use App\Enums\UserEnum;
+use App\Fields\UserFields;
 
 class CartSeed extends Seeder
 {
@@ -23,7 +23,7 @@ class CartSeed extends Seeder
         }
         $users->each(function ($user) {
             if (rand(0, 1)) {
-                Cart::factory()->create([CartEnum::USER_ID => $user->{UserEnum::ID}]);
+                Cart::factory()->create([CartFields::USER_ID => $user->{UserFields::ID}]);
             }
         });
     }

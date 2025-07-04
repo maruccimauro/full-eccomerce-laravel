@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\ShipmentStatusEmun;
+use App\Enums\ShipmentStatusEnum;
 
 return new class extends Migration
 {
@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('tracking_number')->nullable();
-            $table->enum('status', ShipmentStatusEmun::allValuesAsArray())->default(ShipmentStatusEmun::default());
+            $table->enum('status', ShipmentStatusEnum::allValuesAsArray())->default(ShipmentStatusEnum::default());
             $table->timestamp('shipped_at')->nullable();
             $table->timestamp('delivered_at')->nullable();
             $table->timestamps();

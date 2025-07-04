@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\TagEnum;
+use App\Fields\TagFields;
 use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -74,7 +74,7 @@ class TagSeed extends Seeder
         ];
 
         foreach ($productTags as $key => $value) {
-            Tag::factory()->create([TagEnum::NAME => $value]);
+            Tag::factory()->create([TagFields::NAME => $value]);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\AddressEnum;
+use App\Fields\AddressFields;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,14 +20,14 @@ class AddressFactory extends Factory
     {
 
         return [
-            AddressEnum::RECIPIENT_NAME => fake()->name(),
-            AddressEnum::LINE1 => fake()->address(),
-            AddressEnum::LINE2 => fake()->address(),
-            AddressEnum::CITY => fake()->city(),
-            AddressEnum::PROVINCE => fake()->city(),
-            AddressEnum::POSTAL_CODE => fake()->postcode(),
-            AddressEnum::COUNTRY => fake()->country(),
-            AddressEnum::PHONE => fake()->phoneNumber(),
+            AddressFields::RECIPIENT_NAME => fake()->name(),
+            AddressFields::LINE1 => fake()->address(),
+            AddressFields::LINE2 => fake()->address(),
+            AddressFields::CITY => fake()->city(),
+            AddressFields::PROVINCE => fake()->city(),
+            AddressFields::POSTAL_CODE => fake()->postcode(),
+            AddressFields::COUNTRY => fake()->country(),
+            AddressFields::PHONE => fake()->phoneNumber(),
         ];
     }
 }

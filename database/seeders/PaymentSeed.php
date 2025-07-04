@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Enums\OrderEnum;
+use App\Fields\OrderFields;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Enums\PaymentEnum;
+use App\Fields\PaymentFields;
 use App\Enums\PaymentStatusEnum;
 use App\Models\Order;
 use App\Models\Payment;
@@ -17,10 +17,6 @@ class PaymentSeed extends Seeder
      */
     public function run(): void
     {
-        /* PaymentEnum::ORDER_ID => 'order_id',
-            PaymentEnum::AMOUNT => 'amount',
-            PaymentEnum::STATUS => 'status',
-            PaymentEnum::PAID_AT => 'paid_at',*/
 
         $orders = Order::All();
         if ($orders->count() === 0) {
@@ -33,10 +29,10 @@ class PaymentSeed extends Seeder
             $status = fake()->randomElement(PaymentStatusEnum::allValuesAsArray());
 
             Payment::factory()->create([
-                PaymentEnum::ORDER_ID => $order->{OrderEnum::ID},
-                PaymentEnum::AMOUNT => $order->{OrderEnum::TOTAL},
-                PaymentEnum::STATUS => $status,
-                PaymentEnum::PAID_AT => $status === PaymentStatusEnum::PAID ? fake()->dateTimeBetween('2020-01-01', '2025-01-01') : null
+                PaymentFields::ORDER_ID => $order->{OrderFields::ID},
+                PaymentFields::AMOUNT => $order->{OrderFields::TOTAL},
+                PaymentFields::STATUS => $status,
+                PaymentFields::PAID_AT => $status === PaymentStatusEnum::PAID ? fake()->dateTimeBetween('2020-01-01', '2025-01-01') : null
             ]);
         });
     }

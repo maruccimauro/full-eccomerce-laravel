@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\ShipmentEnum;
-use App\Enums\ShipmentStatusEmun;
+use App\Fields\ShipmentFields;
+use App\Enums\ShipmentStatusEnum;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shipment>
@@ -20,10 +20,10 @@ class ShipmentFactory extends Factory
     {
         $shipped_at = fake()->dateTimeBetween('2020-01-01', '2025-01-01');
         return [
-            ShipmentEnum::TRACKING_NUMBER => fake()->numerify('########################'),
-            ShipmentEnum::STATUS => fake()->randomElement(ShipmentStatusEmun::allValuesAsArray()),
-            ShipmentEnum::SHIPPED_AT => $shipped_at,
-            ShipmentEnum::DELIVERED_AT => fake()->dateTimeBetween($shipped_at, '2025-01-01'),
+            ShipmentFields::TRACKING_NUMBER => fake()->numerify('########################'),
+            ShipmentFields::STATUS => fake()->randomElement(ShipmentStatusEnum::allValuesAsArray()),
+            ShipmentFields::SHIPPED_AT => $shipped_at,
+            ShipmentFields::DELIVERED_AT => fake()->dateTimeBetween($shipped_at, '2025-01-01'),
         ];
     }
 }

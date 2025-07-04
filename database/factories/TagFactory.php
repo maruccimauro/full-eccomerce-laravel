@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\TagEnum;
+use App\Fields\TagFields;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            TagEnum::NAME => fake()->word()
+            TagFields::NAME => fake()->word()
         ];
     }
 }

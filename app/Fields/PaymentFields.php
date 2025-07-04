@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Fields;
 
-class PaymentEnum
+class PaymentFields
 {
   public const ID = 'id';
   public const ORDER_ID = 'order_id';

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\CartEnum;
+use App\Fields\CartFields;
 use App\Models\User;
 
 /**

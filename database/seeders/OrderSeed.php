@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Order;
-use App\Enums\OrderEnum;
-use App\Enums\UserEnum;
-use App\Enums\AddressEnum;
+use App\Fields\OrderFields;
+use App\Fields\UserFields;
+use App\Fields\AddressFields;
 
 class OrderSeed extends Seeder
 {
@@ -26,7 +26,7 @@ class OrderSeed extends Seeder
             $addresses = $user->addresses;
 
             if ($addresses->isEmpty()) {
-                $user_id = $user->{UserEnum::ID};
+                $user_id = $user->{UserFields::ID};
                 throw new \Exception("El usuario [$user_id] no tiene ningun address para alimentar el factory.");
             }
 
@@ -34,9 +34,9 @@ class OrderSeed extends Seeder
 
             for ($i = 0; $i < $ordersToCreate; $i++) {
                 Order::factory()->create([
-                    OrderEnum::USER_ID    => $user->{UserEnum::ID},
-                    OrderEnum::ADDRESS_ID => $addresses->random()->{AddressEnum::ID},
-                    OrderEnum::TOTAL      => 9999,
+                    OrderFields::USER_ID    => $user->{UserFields::ID},
+                    OrderFields::ADDRESS_ID => $addresses->random()->{AddressFields::ID},
+                    OrderFields::TOTAL      => 9999,
                 ]);
             }
         });

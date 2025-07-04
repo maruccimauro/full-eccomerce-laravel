@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use App\Enums\UserEnum;
+use App\Fields\UserFields;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -25,12 +25,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            UserEnum::NAME => fake()->name(),
-            UserEnum::EMAIL => fake()->unique()->safeEmail(),
-            UserEnum::EMAIL_VERIFIED_AT => now(),
-            UserEnum::PASSWORD => static::$password ??= Hash::make('password'),
-            UserEnum::REMEMBER_TOKEN => Str::random(10),
-            UserEnum::PHONE => fake()->phoneNumber(),
+            UserFields::NAME => fake()->name(),
+            UserFields::EMAIL => fake()->unique()->safeEmail(),
+            UserFields::EMAIL_VERIFIED_AT => now(),
+            UserFields::PASSWORD => static::$password ??= Hash::make('password'),
+            UserFields::REMEMBER_TOKEN => Str::random(10),
+            UserFields::PHONE => fake()->phoneNumber(),
         ];
     }
 

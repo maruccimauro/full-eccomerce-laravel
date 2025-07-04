@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Enums\OrderEnum;
+use App\Fields\OrderFields;
 use App\Enums\OrderPaymentStatusEnum;
 use App\Enums\OrderStatusEnum;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
@@ -19,10 +20,11 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            OrderEnum::STATUS => fake()->randomElement(OrderStatusEnum::allValuesAsArray()),
-            OrderEnum::PAYMENT_METHOD => fake()->randomElement(['MercadoPago', 'Tarjeta de credito']),
-            OrderEnum::PAYMENT_STATUS => fake()->randomElement(OrderPaymentStatusEnum::allValuesAsArray()),
+            OrderFields::STATUS => fake()->randomElement(OrderStatusEnum::allValuesAsArray()),
+            OrderFields::PAYMENT_METHOD => fake()->randomElement(['MercadoPago', 'Tarjeta de credito']),
+            OrderFields::PAYMENT_STATUS => fake()->randomElement(OrderPaymentStatusEnum::allValuesAsArray()),
         ];
     }
 }

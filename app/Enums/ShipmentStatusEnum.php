@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-class ShipmentStatusEmun
+class ShipmentStatusEnum
 {
   use EnumApp;
   public const PENDING     = 'pending';

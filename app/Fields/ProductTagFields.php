@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Enums;
+namespace App\Fields;
 
-class ProductImageEnum
+class ProductTagFields
 {
-  public const ID = 'id';
   public const PRODUCT_ID = 'product_id';
-  public const URL = 'url';
-  public const IS_MAIN = 'is_main';
+  public const TAG_ID = 'tag_id';
   public const CREATED_AT = 'created_at';
   public const UPDATED_AT = 'updated_at';
 }

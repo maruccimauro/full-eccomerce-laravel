@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Enums\OrderEnum;
-use App\Enums\OrderItemEnum;
-use App\Enums\ProductEnum;
+use App\Fields\OrderFields;
+use App\Fields\OrderItemFields;
+use App\Fields\ProductFields;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -35,18 +35,18 @@ class OrderItemSeed extends Seeder
             for ($i = 0; $i < $productsToCreate; $i++) {
                 $product = $products->random();
                 $productQuantity = rand(1, 5);
-                $productPrice = $product->{ProductEnum::PRICE};
+                $productPrice = $product->{ProductFields::PRICE};
                 $partialPrice = $productPrice *  $productQuantity;
                 $totalPrice += $partialPrice;
                 OrderItem::factory()->create([
-                    OrderItemEnum::ORDER_ID => $order->{OrderEnum::ID},
-                    OrderItemEnum::PRODUCT_ID => $product->{ProductEnum::ID},
-                    OrderItemEnum::QUANTITY => $productQuantity,
-                    OrderItemEnum::UNIT_PRICE => $productPrice,
-                    OrderItemEnum::TOTAL_PRICE => $partialPrice
+                    OrderItemFields::ORDER_ID => $order->{OrderFields::ID},
+                    OrderItemFields::PRODUCT_ID => $product->{ProductFields::ID},
+                    OrderItemFields::QUANTITY => $productQuantity,
+                    OrderItemFields::UNIT_PRICE => $productPrice,
+                    OrderItemFields::TOTAL_PRICE => $partialPrice
                 ]);
             }
-            $order->{OrderEnum::TOTAL} = $totalPrice;
+            $order->{OrderFields::TOTAL} = $totalPrice;
             $order->save();
         });
     }

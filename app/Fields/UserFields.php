@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Fields;
 
-class UserEnum
+class UserFields
 {
   public const ID = 'id';
   public const NAME = 'name';

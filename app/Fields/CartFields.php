@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Fields;
 
-class CartEnum
+class CartFields
 {
   public const ID = 'id';
   public const USER_ID = 'user_id';

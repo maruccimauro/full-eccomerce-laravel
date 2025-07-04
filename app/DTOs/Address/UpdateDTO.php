@@ -3,7 +3,7 @@
 namespace App\DTOs\Address;
 
 use Illuminate\Http\Request;
-use App\Enums\AddressEnum;
+use App\Fields\AddressFields;
 use App\DTOs\BaseDTO;
 
 class UpdateDTO
@@ -25,15 +25,15 @@ class UpdateDTO
   public static function fromRequest(Request $request): self
   {
     return new self(
-      user_id: (int) $request->input(AddressEnum::USER_ID),
-      recipient_name: $request->input(AddressEnum::RECIPIENT_NAME),
-      line1: $request->input(AddressEnum::LINE1),
-      line2: $request->input(AddressEnum::LINE2),
-      city: $request->input(AddressEnum::CITY),
-      province: $request->input(AddressEnum::PROVINCE),
-      postal_code: $request->input(AddressEnum::POSTAL_CODE),
-      country: $request->input(AddressEnum::COUNTRY),
-      phone: $request->input(AddressEnum::PHONE),
+      user_id: (int) $request->input(AddressFields::USER_ID),
+      recipient_name: $request->input(AddressFields::RECIPIENT_NAME),
+      line1: $request->input(AddressFields::LINE1),
+      line2: $request->input(AddressFields::LINE2),
+      city: $request->input(AddressFields::CITY),
+      province: $request->input(AddressFields::PROVINCE),
+      postal_code: $request->input(AddressFields::POSTAL_CODE),
+      country: $request->input(AddressFields::COUNTRY),
+      phone: $request->input(AddressFields::PHONE),
     );
   }
 }

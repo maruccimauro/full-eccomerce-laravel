@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Enums\OrderEnum;
-use App\Enums\ShipmentEnum;
+use App\Fields\OrderFields;
+use App\Fields\ShipmentFields;
 use App\Models\Order;
 use App\Models\Shipment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,7 +22,7 @@ class ShipmentSeed extends Seeder
         }
         $orders->each(function ($order) {
             Shipment::factory()->create([
-                ShipmentEnum::ORDER_ID => $order->{OrderEnum::ID}
+                ShipmentFields::ORDER_ID => $order->{OrderFields::ID}
             ]);
         });
     }

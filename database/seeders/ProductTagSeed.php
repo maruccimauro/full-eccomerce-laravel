@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\TagEnum;
+use App\Fields\TagFields;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -31,7 +31,7 @@ class ProductTagSeed extends Seeder
             $tagsToAttach = rand(1, $maxAttachTags);
 
             $randomTags = $tags->random($tagsToAttach);
-            $tagsIds = $randomTags->pluck(TagEnum::ID)->toArray();
+            $tagsIds = $randomTags->pluck(TagFields::ID)->toArray();
 
             $product->tags()->sync($tagsIds);
         });
