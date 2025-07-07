@@ -11,7 +11,6 @@ class UpdateDTO
   use BaseDTO;
 
   public function __construct(
-    public readonly int $id,
     public readonly string $name,
     public readonly ?string $description,
     public readonly float $price,
@@ -23,7 +22,6 @@ class UpdateDTO
   public static function fromRequest(Request $request): self
   {
     return new self(
-      $request->{ProductFields::ID},
       $request->{ProductFields::NAME},
       $request->{ProductFields::DESCRIPTION},
       (float) $request->{ProductFields::PRICE},

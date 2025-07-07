@@ -44,10 +44,10 @@ class ProductController extends Controller
         return response()->json(['message' => 'Solicitud procesada con exito.', 'data' => new ProductResource($result)], Response::HTTP_OK);
     }
 
-    public function update(UpdateRequest $request)
+    public function update(UpdateRequest $request, int $product_id)
     {
         $dto = UpdateDTO::fromRequest($request);
-        $result = $this->updateService->execute($dto);
+        $result = $this->updateService->execute($dto, $product_id);
         return response()->json(['message' => 'Solicitud procesada con exito.', 'data' => new ProductResource($result)], Response::HTTP_OK);
     }
 

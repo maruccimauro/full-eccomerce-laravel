@@ -14,10 +14,10 @@ use App\Fields\CategoryFields;
 
 class UpdateService
 {
-  public function execute(UpdateDTO $dto)
+  public function execute(UpdateDTO $dto, $product_id)
   {
 
-    $id = $dto->{ProductFields::ID};
+    $id = $product_id;
     $name = Str::title($dto->{ProductFields::NAME});
     $slug = Str::slug($name);
     $category_id = $dto->{ProductFields::CATEGORY_ID};

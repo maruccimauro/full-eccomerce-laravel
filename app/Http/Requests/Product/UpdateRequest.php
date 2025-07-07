@@ -23,7 +23,6 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            ProductFields::ID        => 'required|exists:products,id',
             ProductFields::NAME        => 'required|string|max:100',
             ProductFields::DESCRIPTION => 'nullable|string|max:500',
             ProductFields::PRICE       => 'required|numeric|min:0',
@@ -36,8 +35,6 @@ class UpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            ProductFields::ID . '.required'        => 'El campo id es requerido.',
-            ProductFields::ID . '.exists'          => 'El id ingresado no es valido.',
 
             ProductFields::NAME . '.required'        => 'El campo nombre es requerido.',
             ProductFields::NAME . '.string'          => 'El nombre debe ser una cadena de texto.',
