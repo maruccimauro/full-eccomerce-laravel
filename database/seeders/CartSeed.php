@@ -22,9 +22,7 @@ class CartSeed extends Seeder
             throw new \Exception("Se necesitan usuarios para ejecutar " . static::class);
         }
         $users->each(function ($user) {
-            if (rand(0, 1)) {
-                Cart::factory()->create([CartFields::USER_ID => $user->{UserFields::ID}]);
-            }
+            Cart::factory()->create([CartFields::USER_ID => $user->{UserFields::ID}]);
         });
     }
 }
