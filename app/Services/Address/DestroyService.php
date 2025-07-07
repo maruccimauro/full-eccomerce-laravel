@@ -17,7 +17,7 @@ class DestroyService
       throw new HttpResponseException(response()->json(['message' => "No existe ninguna direccion con el id [$address_id]"], Response::HTTP_NOT_FOUND));
     }
 
-    if (Gate::denies('delete', [Address::class, $address])) {
+    if (Gate::denies('delete', $address)) {
       throw new HttpResponseException(response()->json(['message' => 'No tienes autorizacion para realizar esta accion.'], Response::HTTP_FORBIDDEN));
     }
 

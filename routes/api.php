@@ -9,15 +9,15 @@ use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\CategoryController;
+
 //Auth
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 
 //addresses
-Route::get('/addresses', [AddressController::class, 'index']);
-
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/addresses', [AddressController::class, 'index']);
     Route::post('/addresses', [AddressController::class, 'store']);
     Route::get('/addresses/{address}', [AddressController::class, 'show']);
     Route::put('/addresses/{address}', [AddressController::class, 'update']);

@@ -11,29 +11,27 @@ class UpdateDTO
   use BaseDTO;
 
   public function __construct(
-    public readonly int $user_id,
     public readonly string $recipient_name,
     public readonly string $line1,
-    public readonly ?string $line2,
+    public readonly ?string $line2, // Line2 can be nullable
     public readonly string $city,
     public readonly string $province,
     public readonly string $postal_code,
     public readonly string $country,
-    public readonly ?string $phone,
+    public readonly string $phone,
   ) {}
 
   public static function fromRequest(Request $request): self
   {
     return new self(
-      user_id: (int) $request->input(AddressFields::USER_ID),
-      recipient_name: $request->input(AddressFields::RECIPIENT_NAME),
-      line1: $request->input(AddressFields::LINE1),
-      line2: $request->input(AddressFields::LINE2),
-      city: $request->input(AddressFields::CITY),
-      province: $request->input(AddressFields::PROVINCE),
-      postal_code: $request->input(AddressFields::POSTAL_CODE),
-      country: $request->input(AddressFields::COUNTRY),
-      phone: $request->input(AddressFields::PHONE),
+      $request->{AddressFields::RECIPIENT_NAME},
+      $request->{AddressFields::LINE1},
+      $request->{AddressFields::LINE2},
+      $request->{AddressFields::CITY},
+      $request->{AddressFields::PROVINCE},
+      $request->{AddressFields::POSTAL_CODE},
+      $request->{AddressFields::COUNTRY},
+      $request->{AddressFields::PHONE}
     );
   }
 }

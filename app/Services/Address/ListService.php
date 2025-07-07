@@ -15,6 +15,7 @@ class ListService
     if (Gate::denies('viewAny', [Address::class])) {
       throw new HttpResponseException(response()->json(['message' => 'No tienes autorizacion para realizar esta accion.'], Response::HTTP_FORBIDDEN));
     }
-    return Address::where('user_id', Auth::user()->id)->get();
+    $addresses = Auth::user()->addresses()->get();
+    return $addresses;
   }
 }

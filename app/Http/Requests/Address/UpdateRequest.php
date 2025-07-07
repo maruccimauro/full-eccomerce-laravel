@@ -15,7 +15,6 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            AddressFields::USER_ID => 'required|exists:users,id',
             AddressFields::RECIPIENT_NAME => 'required|string|max:255',
             AddressFields::LINE1 => 'required|string|max:255',
             AddressFields::LINE2 => 'nullable|string|max:255',
@@ -30,9 +29,6 @@ class UpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            AddressFields::USER_ID . '.required' => 'El campo usuario es obligatorio.',
-            AddressFields::USER_ID . '.exists' => 'El usuario seleccionado no existe.',
-
             AddressFields::RECIPIENT_NAME . '.required' => 'El nombre del destinatario es obligatorio.',
             AddressFields::RECIPIENT_NAME . '.string' => 'El nombre del destinatario debe ser una cadena de texto.',
             AddressFields::RECIPIENT_NAME . '.max' => 'El nombre del destinatario no puede superar los 255 caracteres.',
