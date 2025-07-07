@@ -23,7 +23,6 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            CategoryFields::ID => 'required|exists:categories,id',
             CategoryFields::NAME => 'required|max:40',
             CategoryFields::PARENT_ID => 'nullable|exists:categories,id',
         ];
@@ -32,8 +31,6 @@ class UpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            CategoryFields::ID . '.required' => 'El campo id es requerido.',
-            CategoryFields::ID . '.exists' => 'El id ingresado no es valido.',
             CategoryFields::NAME . '.required' => 'El campo nombre es requerido.',
             CategoryFields::NAME . '.max' => 'El campo nombre no puede exceder de los 40 caracteres.',
             CategoryFields::PARENT_ID . '.exists' => 'El parent_id ingresado no es valido.'

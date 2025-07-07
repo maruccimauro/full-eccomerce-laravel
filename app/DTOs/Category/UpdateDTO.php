@@ -11,7 +11,6 @@ class UpdateDTO
   use BaseDTO;
 
   public function __construct(
-    public readonly int $id,
     public readonly string $name,
     public readonly ?int $parent_id,
   ) {}
@@ -19,7 +18,6 @@ class UpdateDTO
   public static function fromRequest(Request $request)
   {
     return new self(
-      $id = $request->{CategoryFields::ID},
       $name = $request->{CategoryFields::NAME},
       $parent_id = $request?->{CategoryFields::PARENT_ID}
     );

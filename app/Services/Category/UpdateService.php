@@ -12,10 +12,10 @@ use Illuminate\Support\Str;
 
 class UpdateService
 {
-  public function execute(UpdateDTO $dto)
+  public function execute(UpdateDTO $dto, $category_id)
   {
-    $id = $dto->{CategoryFields::ID};
-    $name = ucwords(strtolower(trim($dto->{CategoryFields::NAME})));
+    $id = $category_id;
+    $name = Str::title($dto->{CategoryFields::NAME});
     $slug = Str::slug($name);
     $parent_id = $dto->{CategoryFields::PARENT_ID};
 

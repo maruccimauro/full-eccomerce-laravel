@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartItemController;
-
+use App\Http\Controllers\CategoryController;
 //Auth
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -33,6 +33,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/products', [ProductController::class, 'store']);
     Route::put('/products/{product}', [ProductController::class, 'update']);
     Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+});
+
+//ProductImage
+Route::get('/categories', [categoryController::class, 'index']);
+Route::get('/categories/{category}', [categoryController::class, 'show']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/categories', [categoryController::class, 'store']);
+    Route::put('/categories/{category}', [categoryController::class, 'update']);
+    Route::delete('/categories/{category}', [categoryController::class, 'destroy']);
 });
 
 
