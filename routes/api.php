@@ -7,7 +7,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\CartItemController;
 
 //Auth
 Route::post('/register', [AuthController::class, 'register']);
@@ -48,12 +48,22 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
-//ProductImage
-Route::get('/carts', [cartController::class, 'index']);
-Route::get('/carts/{cart}', [cartController::class, 'show']);
+//cart
+Route::get('/carts', [CartController::class, 'index']);
+Route::get('/carts/{cart}', [CartController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/carts', [cartController::class, 'store']);
-    Route::put('/carts/{cart}', [cartController::class, 'update']);
-    Route::delete('/carts/{cart}', [cartController::class, 'destroy']);
+    Route::post('/carts', [CartController::class, 'store']);
+    Route::put('/carts/{cart}', [CartController::class, 'update']);
+    Route::delete('/carts/{cart}', [CartController::class, 'destroy']);
+});
+
+
+//cartItem
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/cartitems', [CartitemController::class, 'index']);
+    Route::get('/cartitems/{cartitems}', [CartitemController::class, 'show']);
+    Route::post('/cartitems', [CartitemController::class, 'store']);
+    Route::put('/cartitems/{cartitem}', [CartitemController::class, 'update']);
+    Route::delete('/cartitems/{cartitem}', [CartitemController::class, 'destroy']);
 });
