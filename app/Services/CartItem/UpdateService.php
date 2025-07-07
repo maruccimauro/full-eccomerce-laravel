@@ -18,12 +18,11 @@ class UpdateService
 {
   public function execute(UpdateDTO $dto, $cartitem_id)
   {
-
+    $id = $cartitem_id;
     $product_id = $dto->{CartItemFields::PRODUCT_ID};
     $quantity = $dto->{CartItemFields::QUANTITY};
 
-    $cartItem = CartItem::find($cartitem_id);
-    $cart_id = $cartItem->{CartItemFields::CART_ID};
+    $cartItem = CartItem::find($id);
 
     if (!$cartItem) {
       throw new HttpResponseException(response()->json(['message' => 'El id del carrito ingresado no es valido.'], Response::HTTP_NOT_FOUND));
@@ -31,10 +30,6 @@ class UpdateService
 
     if (!Gate::allows('update', $cartItem)) {
       throw new HttpResponseException(response()->json(['message' => 'No tienes autorizacion para realizar esta accion.'], Response::HTTP_FORBIDDEN));
-    }
-
-    if (!Cart::where(CartFields::ID, $cart_id)->exists()) {
-      throw new HttpResponseException(response()->json(['message' => 'El id del carrito ingresado no es valido.'], Response::HTTP_NOT_FOUND));
     }
 
     if (!Product::where(ProductFields::ID, $product_id)->exists()) {

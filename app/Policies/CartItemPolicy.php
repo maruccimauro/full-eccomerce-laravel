@@ -16,7 +16,7 @@ class CartItemPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole(UserRoleEnum::ADMIN);
+        return true;
     }
 
     /**
