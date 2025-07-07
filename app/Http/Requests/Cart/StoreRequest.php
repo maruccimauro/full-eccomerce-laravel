@@ -17,16 +17,11 @@ class StoreRequest extends FormRequest
 
     public function rules(): array
     {
-        return [
-            CartFields::USER_ID => 'required|exists:users,id',
-        ];
+        return [];
     }
 
     public function messages(): array
     {
-        return [
-            CartFields::USER_ID . '.required' => 'El campo usuario es obligatorio.',
-            CartFields::USER_ID . '.exists' => 'El usuario seleccionado no es válido.',
-        ];
+        return [];
     }
 }

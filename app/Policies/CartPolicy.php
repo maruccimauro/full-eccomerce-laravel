@@ -2,10 +2,11 @@
 
 namespace App\Policies;
 
-use App\Enums\UserRoleEnum;
+use App\Fields\CartFields;
+use App\Fields\UserFields;
 use App\Models\Cart;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
+
 
 class CartPolicy
 {
@@ -22,7 +23,7 @@ class CartPolicy
      */
     public function view(User $user, Cart $cart): bool
     {
-        return true;
+        return $user->{UserFields::ID} === $cart->{CartFields::USER_ID};
     }
 
     /**
@@ -30,7 +31,7 @@ class CartPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole(UserRoleEnum::ADMIN);
+        return true;
     }
 
     /**
@@ -38,7 +39,7 @@ class CartPolicy
      */
     public function update(User $user, Cart $cart): bool
     {
-        return $user->hasRole(UserRoleEnum::ADMIN);
+        return $user->{UserFields::ID} === $cart->{CartFields::USER_ID};
     }
 
     /**
@@ -46,7 +47,7 @@ class CartPolicy
      */
     public function delete(User $user, Cart $cart): bool
     {
-        return $user->hasRole(UserRoleEnum::ADMIN);
+        return $user->{UserFields::ID} === $cart->{CartFields::USER_ID};
     }
 
     /**

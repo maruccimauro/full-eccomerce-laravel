@@ -10,14 +10,10 @@ class UpdateDTO
 {
   use BaseDTO;
 
-  public function __construct(
-    public readonly int $user_id,
-  ) {}
+  public function __construct() {}
 
   public static function fromRequest(Request $request): self
   {
-    return new self(
-      $request->{CartFields::USER_ID}
-    );
+    return new self();
   }
 }
