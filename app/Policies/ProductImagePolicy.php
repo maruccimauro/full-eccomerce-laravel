@@ -14,7 +14,7 @@ class ProductImagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasRole(UserRoleEnum::ADMIN);
     }
 
     /**
@@ -22,7 +22,7 @@ class ProductImagePolicy
      */
     public function view(User $user, ProductImage $productImage): bool
     {
-        return true;
+        return $user->hasRole(UserRoleEnum::ADMIN);
     }
 
     /**

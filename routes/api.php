@@ -48,10 +48,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 //ProductImage
-Route::get('/productImages', [ProductImageController::class, 'index']);
-Route::get('/productImages/{productImage}', [ProductImageController::class, 'show']);
-
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/productImages', [ProductImageController::class, 'index']);
+    Route::get('/productImages/{productImage}', [ProductImageController::class, 'show']);
     Route::post('/productImages', [ProductImageController::class, 'store']);
     Route::put('/productImages/{productImage}', [ProductImageController::class, 'update']);
     Route::delete('/productImages/{productImage}', [ProductImageController::class, 'destroy']);
