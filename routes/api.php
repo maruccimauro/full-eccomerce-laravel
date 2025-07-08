@@ -9,6 +9,8 @@ use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+
 
 //Auth
 Route::post('/register', [AuthController::class, 'register']);
@@ -70,8 +72,16 @@ Route::middleware('auth:sanctum')->group(function () {
 //cartItem
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/cartitems', [CartitemController::class, 'index']);
-    Route::get('/cartitems/{cartitems}', [CartitemController::class, 'show']);
+    Route::get('/cartitems/{cartitem}', [CartitemController::class, 'show']);
     Route::post('/cartitems', [CartitemController::class, 'store']);
     Route::put('/cartitems/{cartitem}', [CartitemController::class, 'update']);
     Route::delete('/cartitems/{cartitem}', [CartitemController::class, 'destroy']);
+});
+
+
+//Order
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/{order}/cartitems', [OrderController::class, 'showWithOrderItems']);
+    Route::post('/orders', [OrderController::class, 'store']);
 });
